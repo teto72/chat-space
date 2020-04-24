@@ -1,0 +1,26 @@
+.main-chat
+  .main-chat__header
+    .main-chat__header-leftbox
+      .main-chat__header-leftbox-name
+        test
+      .main-chat__header-leftbox-list
+        Member:name
+    .main-chat__header-rightbox
+      = link_to "#", class: "main-chat__Edit-btn" do
+        Edit
+  .main-chat__messages
+    .main-chat__message
+      .main-chat__message-info
+        abc 
+        .main-chat__message-data
+          2020/0424(fri)17:0011
+      .main-chat__message-text
+        aiueo
+  
+  .main-chat__form
+    %input.main-chat__input-text{placeholder: "type a message", type: "text"}
+    .main-chat__form-image
+      %label{class: "main-chat__image"}
+        %i.far.fa-image
+        %input.main-chat__image-tag{type: "file"}
+    %input.main-chat__submit-btn{name: "commit", type: "submit", value: "Send"}
