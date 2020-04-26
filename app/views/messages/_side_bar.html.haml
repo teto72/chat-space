@@ -2,12 +2,12 @@
   .side-chat__header
     .side-chat__box
       .side-chat__box-name
-        abc
+        = current_user.nickname
       .side-chat__box-menu
-        = link_to "#", class: "side-chat__menu-btn" do
+        = link_to edit_user_path(current_user), class: "side-chat__menu-btn" do
           %i.fas.fa-cog
         = link_to "#", class: "side-chat__menu-btn" do
-          %i.far.fa-edit
+          %i.fas.fa-edit
   .side-chat__groups
     .side-chat__group
       = link_to "#", class: "side-chat__group-btn"  do
