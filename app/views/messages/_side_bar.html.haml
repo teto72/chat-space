@@ -6,12 +6,13 @@
       .side-chat__box-menu
         = link_to edit_user_path(current_user), class: "side-chat__menu-btn" do
           %i.fas.fa-cog
-        = link_to "#", class: "side-chat__menu-btn" do
+        = link_to new_group_path, class: "side-chat__menu-btn" do
           %i.fas.fa-edit
   .side-chat__groups
-    .side-chat__group
-      = link_to "#", class: "side-chat__group-btn"  do
-        .side-chat__group-name
-          techcamp
-        .side-chat__group-messages
-          messages
+    - current_user.groups.each do |group|
+      .side-chat__group
+        = link_to "#", class: "side-chat__group-btn"  do
+          .side-chat__group-name
+            = group.name
+          .side-chat__group-messages
+            messages
