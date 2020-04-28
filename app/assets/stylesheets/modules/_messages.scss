@@ -21,6 +21,7 @@
     width: 300px;
     background-color: #2f3e51;
     padding: 20px 20px 0;
+    overflow: scroll;
   }
   &__group{
     padding-bottom: 40px;
@@ -85,6 +86,13 @@
     bottom: 0px;
     color: #999999;
     font-size: 12px;
+    display: flex;
+  }
+  &__ul{
+    display: flex;
+  }
+  &__li{
+    padding-left: 5px;
   }
   &__header-rightbox{
     width: 72px;
@@ -99,13 +107,17 @@
     color: #38aef0;
     font-size: 16px;
   }
-  &__message{
+  &__messages{
     height: calc(100vh - 190px);
     background-color: #fafafa;
     padding: 35px 40px;
+    overflow: scroll;
+  }
+  &__message{
+    padding-bottom: 46px;
   }
   &__message-info{
-    padding-bottom: 12px;
+    margin-bottom: 12px;
     font-size: 16px;
     color: #333333;
     display: flex;
@@ -117,13 +129,11 @@
   &__message-text{
     color: #434A54;
     font-size: 14px;
-    padding-bottom: 46px;
   }
   &__form{       /*フォーム部分*/
     height: 90px;
     background-color: #d2d2d2;
     padding: 20px 40px;
-    display: flex;
     position: relative;
   }
   &__input-text{
@@ -148,5 +158,8 @@
     padding-left: 15px;
     padding: 0 30px;
     cursor: pointer;
+  }
+  .new_message{
+    display: flex;
   }
 }

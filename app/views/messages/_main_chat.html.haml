@@ -2,25 +2,23 @@
   .main-chat__header
     .main-chat__header-leftbox
       .main-chat__header-leftbox-name
-        test
+        = @group.name
       .main-chat__header-leftbox-list
-        Member:name
+        Member:
+        .main-chat__ul
+          - @group.users.each do |user|
+            .main-chat__li= user.nickname
     .main-chat__header-rightbox
-      = link_to "#", class: "main-chat__Edit-btn" do
+      = link_to edit_group_path(current_user), class: "main-chat__Edit-btn" do
         Edit
-  .main-chat__messages
-    .main-chat__message
-      .main-chat__message-info
-        abc 
-        .main-chat__message-data
-          2020/0424(fri)17:0011
-      .main-chat__message-text
-        aiueo
+  .main-chat__messages      
+    = render @messages
   
   .main-chat__form
-    %input.main-chat__input-text{placeholder: "type a message", type: "text"}
-    .main-chat__form-image
-      %label{class: "main-chat__image"}
-        %i.far.fa-image
-        %input.main-chat__image-tag{type: "file"}
-    %input.main-chat__submit-btn{name: "commit", type: "submit", value: "Send"}
+    = form_for [@group, @message] do |f|
+      = f.text_field :text, class: "main-chat__input-text", placeholder: "type a message"
+      .main-chat__form-image
+        = f.label :image,class: "main-chat__image" do
+          = icon('fas', 'image')
+          = f.file_field :image, class: "main-chat__image-tag" 
+      = f.submit 'Send', class: "main-chat__submit-btn"

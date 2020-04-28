@@ -11,8 +11,8 @@
   .side-chat__groups
     - current_user.groups.each do |group|
       .side-chat__group
-        = link_to "#", class: "side-chat__group-btn"  do
+        = link_to group_messages_path(group), class: "side-chat__group-btn"  do
           .side-chat__group-name
             = group.name
           .side-chat__group-messages
-            messages
+            = group.show_last_message
