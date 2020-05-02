@@ -45,6 +45,7 @@ $(function(){
     })
     .done(function(data){
       var html = buildHTML(data);
+      console.log(html)
       $('.main-chat__messages').append(html);
       $('.main-chat__messages').animate({scrollTop: $('.main-chat__messages')[0].scrollHeight});
       $('input').prop('disabled',false);
