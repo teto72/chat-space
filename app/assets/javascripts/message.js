@@ -2,7 +2,7 @@ $(function(){
       function buildHTML(message){
         if (message.image) {
           var html =
-          `<div class="main-chat__message">
+          `<div class="main-chat__message" data-message-id=${message.id}>
             <div class="main-chat__message-info">
               ${message.user_nickname}
             </div>
@@ -17,7 +17,7 @@ $(function(){
         return html;
         } else {
           var html =
-            `<div class="main-chat__message">
+            `<div class="main-chat__message" data-message-id=${message.id}>
               <div class="main-chat__message-info">
                 ${message.user_nickname}
               </div>
@@ -45,7 +45,6 @@ $(function(){
     })
     .done(function(data){
       var html = buildHTML(data);
-      console.log(html)
       $('.main-chat__messages').append(html);
       $('.main-chat__messages').animate({scrollTop: $('.main-chat__messages')[0].scrollHeight});
       $('input').prop('disabled',false);
@@ -55,4 +54,29 @@ $(function(){
       alert("メッセージ送信失敗！！");
     });
   })
+  var reloadMessages  = function(){
+    var last_message_id = $('.main-chat__message:last').data("message-id");
+    $.ajax({
+      url: "api/messages",
+      type: 'get',
+      dataType: 'json',
+      data: {id: last_message_id}
+    })
+    .done(function(messages) {
+      if (messages.length !==0 ){
+        var insertHTML = '';
+        $.each(messages, function(i, message){
+          insertHTML += buildHTML(message)
+        });
+        $('.main-chat__messages').append(insertHTML);
+        $('.main-chat__messages').animate({scrollTop: $('.main-chat__messages')[0].scrollHeight});
+      }
+    })
+    .fail(function() {
+      alert('error');
+    });
+  };
+  if (document.location.href.match(/\/groups\/\d+\/messages/)) {
+    setInterval(reloadMessages,7000);
+  } 
 });
