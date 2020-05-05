@@ -5,9 +5,9 @@ $(function(){
           `<div class="main-chat__message" data-message-id=${message.id}>
             <div class="main-chat__message-info">
               ${message.user_nickname}
-            </div>
-            <div class="main-chat__message-data">
-              ${message.created_at}
+              <div class="main-chat__message-data">
+                ${message.created_at}
+              </div>
             </div>
             <div class="main-chat__message-text">
               ${message.text}
@@ -20,9 +20,9 @@ $(function(){
             `<div class="main-chat__message" data-message-id=${message.id}>
               <div class="main-chat__message-info">
                 ${message.user_nickname}
-              </div>
-              <div class="main-chat__message-data">
-                ${message.created_at}
+                <div class="main-chat__message-data">
+                  ${message.created_at}
+                </div>
               </div>
               <div class="main-chat__message-text">
                 ${message.text}
